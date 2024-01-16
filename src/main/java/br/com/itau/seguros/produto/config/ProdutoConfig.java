@@ -1,15 +1,18 @@
-package br.com.itau.seguros.produto.main;
+package br.com.itau.seguros.produto.config;
 
 import br.com.itau.seguros.produto.application.gateway.ProdutoGateway;
-import br.com.itau.seguros.produto.application.usecase.CriarProdutoInteractor;
-import br.com.itau.seguros.produto.application.usecase.CriarProdutoInteractorImpl;
+import br.com.itau.seguros.produto.application.usecase.BuscarProdutoUseCaseImpl;
+import br.com.itau.seguros.produto.application.usecase.CriarProdutoUseCase;
+import br.com.itau.seguros.produto.application.usecase.CriarProdutoUseCaseImpl;
+import br.com.itau.seguros.produto.application.usecase.ListarProdutoUseCaseImpl;
+import br.com.itau.seguros.produto.application.usecase.ListarProdutosUseCase;
 import br.com.itau.seguros.produto.application.usecase.imposto.CofinsInteractor;
 import br.com.itau.seguros.produto.application.usecase.imposto.ImpostoInteractor;
 import br.com.itau.seguros.produto.application.usecase.imposto.IofInteractor;
 import br.com.itau.seguros.produto.application.usecase.imposto.PisInteractor;
 import br.com.itau.seguros.produto.application.usecase.preco.CalculadorDePrecoInteractor;
 import br.com.itau.seguros.produto.application.usecase.preco.CalculadorDePrecoInteractorImpl;
-import br.com.itau.seguros.produto.infrastructure.controller.ProdutoRequestResponseMapper;
+import br.com.itau.seguros.produto.infrastructure.controller.ProdutoDataMapper;
 import br.com.itau.seguros.produto.infrastructure.gateway.ProdutoEntityMapper;
 import br.com.itau.seguros.produto.infrastructure.gateway.ProdutoRepositoryGateway;
 import br.com.itau.seguros.produto.infrastructure.persistence.ProdutoRepository;
@@ -23,8 +26,8 @@ import java.util.Set;
 public class ProdutoConfig {
 
     @Bean
-    CriarProdutoInteractor createProdutoInteractor(ProdutoGateway produtoGateway, CalculadorDePrecoInteractor calculadorDePrecoInteractor) {
-        return new CriarProdutoInteractorImpl(produtoGateway, calculadorDePrecoInteractor);
+    CriarProdutoUseCase createProdutoInteractor(ProdutoGateway produtoGateway, CalculadorDePrecoInteractor calculadorDePrecoInteractor) {
+        return new CriarProdutoUseCaseImpl(produtoGateway, calculadorDePrecoInteractor);
     }
 
     @Bean
@@ -38,8 +41,18 @@ public class ProdutoConfig {
     }
 
     @Bean
-    ProdutoRequestResponseMapper produtoRequestResponseMapper() {
-        return new ProdutoRequestResponseMapper();
+    ProdutoDataMapper produtoRequestResponseMapper() {
+        return new ProdutoDataMapper();
+    }
+
+    @Bean
+    ListarProdutosUseCase listarProdutosUseCase(ProdutoGateway produtoGateway) {
+        return new ListarProdutoUseCaseImpl(produtoGateway);
+    }
+
+    @Bean
+    BuscarProdutoUseCaseImpl buscarProdutoUseCase(ProdutoGateway produtoGateway) {
+        return new BuscarProdutoUseCaseImpl(produtoGateway);
     }
 
     @Bean

@@ -14,13 +14,23 @@ public class ImpostoInteractorTest {
 
     @Test
     void deveCalcularOValorDoImpostoIof() {
-        var imposto = new IofInteractor().calcularImposto(createAliquotas(), PATRIMONIAL, new BigDecimal("100.00"));
+
+        var imposto = new IofInteractor().calcularImposto(
+                createAliquotas(),
+                PATRIMONIAL,
+                new BigDecimal("100.00"));
+
         assertEquals(new BigDecimal("5.00"), imposto);
     }
 
     @Test
     void deveRetornarZeroSeNaoEncontrarAliquota() {
-        var imposto = new IofInteractor().calcularImposto(createAliquotas(), AUTO, new BigDecimal("100.00"));
+
+        var imposto = new IofInteractor().calcularImposto(
+                createAliquotas(),
+                AUTO,
+                new BigDecimal("100.00"));
+
         assertEquals(new BigDecimal("0"), imposto);
     }
 }

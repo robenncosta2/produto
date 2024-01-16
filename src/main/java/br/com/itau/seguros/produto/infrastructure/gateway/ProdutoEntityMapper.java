@@ -3,6 +3,12 @@ package br.com.itau.seguros.produto.infrastructure.gateway;
 import br.com.itau.seguros.produto.domain.model.Produto;
 import br.com.itau.seguros.produto.infrastructure.persistence.ProdutoEntity;
 
+import java.util.List;
+import java.util.Optional;
+
+import static java.util.Optional.*;
+import static java.util.stream.Collectors.toList;
+
 public class ProdutoEntityMapper {
 
     public ProdutoEntity toProdutoEntity(Produto produto) {
@@ -25,5 +31,33 @@ public class ProdutoEntityMapper {
             produtoEntity.precoBase(),
             produtoEntity.precoTarifado()
         );
+    }
+
+    public Optional<Produto> toProdutoOptional(Optional<ProdutoEntity> produtoEntityOptional) {
+
+        if (produtoEntityOptional.isEmpty()) {
+            return empty();
+        }
+
+        var produtoValue = produtoEntityOptional.get();
+
+        return of(new Produto(
+            produtoValue.id(),
+            produtoValue.nome(),
+            produtoValue.categoria(),
+            produtoValue.precoBase(),
+            produtoValue.precoTarifado()
+        ));
+    }
+
+    public List<Produto> toProdutos(List<ProdutoEntity> produtosEntity) {
+
+        return produtosEntity.stream().map(produtoEntity -> new Produto(
+            produtoEntity.id(),
+            produtoEntity.nome(),
+            produtoEntity.categoria(),
+            produtoEntity.precoBase(),
+            produtoEntity.precoTarifado()
+        )).collect(toList());
     }
 }

@@ -48,13 +48,23 @@ public class CalculadorDePrecoInteractorImplTest {
         var precoBase = new BigDecimal("100.00");
         var aliquotas = createAliquotas();
 
-        when(iofImpostoInteractorMock.getAliquotas()).thenReturn(aliquotas);
-        when(pisImpostoInteractorMock.getAliquotas()).thenReturn(aliquotas);
-        when(cofinsInteractorMock.getAliquotas()).thenReturn(aliquotas);
+        when(iofImpostoInteractorMock.getAliquotas())
+            .thenReturn(aliquotas);
 
-        when(iofImpostoInteractorMock.calcularImposto(aliquotas, VIDA, precoBase)).thenReturn(new BigDecimal("10.00"));
-        when(pisImpostoInteractorMock.calcularImposto(aliquotas, VIDA, precoBase)).thenReturn(new BigDecimal("5.00"));
-        when(cofinsInteractorMock.calcularImposto(aliquotas, VIDA, precoBase)).thenReturn(new BigDecimal("2.00"));
+        when(pisImpostoInteractorMock.getAliquotas())
+            .thenReturn(aliquotas);
+
+        when(cofinsInteractorMock.getAliquotas())
+            .thenReturn(aliquotas);
+
+        when(iofImpostoInteractorMock.calcularImposto(aliquotas, VIDA, precoBase))
+            .thenReturn(new BigDecimal("10.00"));
+
+        when(pisImpostoInteractorMock.calcularImposto(aliquotas, VIDA, precoBase))
+            .thenReturn(new BigDecimal("5.00"));
+
+        when(cofinsInteractorMock.calcularImposto(aliquotas, VIDA, precoBase))
+            .thenReturn(new BigDecimal("2.00"));
 
         var precoTarifado = calculadorDePrecoInteractorImpl.calcularPrecoTarifado(precoBase, VIDA);
 

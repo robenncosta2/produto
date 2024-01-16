@@ -4,12 +4,12 @@ import br.com.itau.seguros.produto.application.gateway.ProdutoGateway;
 import br.com.itau.seguros.produto.application.usecase.preco.CalculadorDePrecoInteractor;
 import br.com.itau.seguros.produto.domain.model.Produto;
 
-public class CriarProdutoInteractorImpl implements CriarProdutoInteractor {
+public class CriarProdutoUseCaseImpl implements CriarProdutoUseCase {
 
     private final ProdutoGateway produtoGateway;
     private final CalculadorDePrecoInteractor calculadorDePrecoInteractor;
 
-    public CriarProdutoInteractorImpl(ProdutoGateway produtoGateway, CalculadorDePrecoInteractor calculadorDePrecoInteractor) {
+    public CriarProdutoUseCaseImpl(ProdutoGateway produtoGateway, CalculadorDePrecoInteractor calculadorDePrecoInteractor) {
         this.produtoGateway = produtoGateway;
         this.calculadorDePrecoInteractor = calculadorDePrecoInteractor;
     }
