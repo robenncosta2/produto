@@ -57,3 +57,8 @@ Algumas vantagens dessa arquitetura:
 Com base no exemplo de retorno da API presente na documentação, pude observar que a chave id trata-se de uma
 chave única universal (UUID), nesse sentido optei por utilizar um banco de dados que Oferecesse esse suporte
 de forma nativa.
+
+## Outros endpoins
+
+Para que a API ficasse mais completa, adicionei mais 2 endpoins do tipo GET, um para busca geral
+e outro para busca pelo id.
