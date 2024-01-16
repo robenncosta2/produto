@@ -37,7 +37,6 @@ public class ProdutoRepositoryGateway implements ProdutoGateway {
     public Optional<Produto> getProdutoById(String id) {
 
         var produtoEntity = produtoRepository.findById(id);
-
         return produtoEntityMapper.toProdutoOptional(produtoEntity);
     }
 }

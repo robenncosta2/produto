@@ -101,4 +101,8 @@ public class ProdutoFixture {
     public static List<ProdutoEntity> createProdutosEntity() {
         return of(createProdutoEntity(), createProdutoEntity());
     }
+
+    public static List<Produto> createProdutos() {
+        return of(createProduto(), createProduto());
+    }
 }

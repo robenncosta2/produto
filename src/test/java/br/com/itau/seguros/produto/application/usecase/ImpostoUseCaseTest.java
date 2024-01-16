@@ -10,7 +10,7 @@ import static br.com.itau.seguros.produto.domain.model.Categoria.AUTO;
 import static br.com.itau.seguros.produto.domain.model.Categoria.PATRIMONIAL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ImpostoInteractorTest {
+public class ImpostoUseCaseTest {
 
     @Test
     void deveCalcularOValorDoImpostoIof() {

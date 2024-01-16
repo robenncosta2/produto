@@ -11,6 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -36,5 +37,23 @@ public class ProdutoControllerTest {
             .andDo(print())
             .andExpect(status().isOk())
             .andExpect(content().string(containsString("Seguro de Vida Individual")));
+    }
+
+    @Test
+    void deveRetornar404AoTentarBuscarUmProdutoQueNaoExisteUsandoOId() throws Exception {
+
+        this.mockMvc.perform(
+             get("/produtos/165a5d3fc74fd750c7bb919a8X"))
+            .andDo(print())
+            .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void deveRetornar200AoTentarRecuperarUmaListaDeProdutos() throws Exception {
+
+        this.mockMvc.perform(
+             get("/produtos"))
+            .andDo(print())
+            .andExpect(status().isOk());
     }
 }
