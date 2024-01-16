@@ -18,4 +18,3 @@ public class ListarProdutoUseCaseImpl implements ListarProdutosUseCase {
         return produtoGateway.findAllProdutos();
     }
 }
- 

@@ -11,12 +11,12 @@ import static java.math.BigDecimal.valueOf;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class PisImpostoInteractorTest {
+public class PisImpostoUseCaseTest {
 
     @Test
     void deveRetornarOsValoresDasAliquotasDoImpostoPis() {
 
-        var aliquotas = new PisInteractor().getAliquotas();
+        var aliquotas = new PisUseCase().getAliquotas();
 
         assertNotNull(aliquotas);
 

@@ -17,7 +17,7 @@ public class IofInteractorTest {
     @Test
     void deveRetornarOsValoresDasAliquotasDoImpostoIof() {
 
-        var aliquotas = new IofInteractor().getAliquotas();
+        var aliquotas = new IofUseCase().getAliquotas();
 
         assertNotNull(aliquotas);
 

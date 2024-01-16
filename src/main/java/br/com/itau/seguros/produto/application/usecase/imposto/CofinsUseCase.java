@@ -11,7 +11,7 @@ import static br.com.itau.seguros.produto.domain.model.Categoria.RESIDENCIAL;
 import static java.math.BigDecimal.valueOf;
 import static java.util.Map.of;
 
-public class CofinsInteractor implements ImpostoInteractor {
+public class CofinsUseCase implements ImpostoUseCase {
 
     @Override
     public Map<Categoria, BigDecimal> getAliquotas() {

@@ -10,12 +10,12 @@ import static java.math.BigDecimal.valueOf;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class CofinsInteractorTest {
+public class CofinsUseCaseTest {
 
     @Test
     void deveRetornarOsValoresDasAliquotasDoImpostoCofins() {
 
-        var aliquotas = new CofinsInteractor().getAliquotas();
+        var aliquotas = new CofinsUseCase().getAliquotas();
 
         assertNotNull(aliquotas);
 

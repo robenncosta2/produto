@@ -1,9 +1,9 @@
 package br.com.itau.seguros.produto.application.usecase.preco;
 
-import br.com.itau.seguros.produto.application.usecase.imposto.CofinsInteractor;
-import br.com.itau.seguros.produto.application.usecase.imposto.ImpostoInteractor;
-import br.com.itau.seguros.produto.application.usecase.imposto.IofInteractor;
-import br.com.itau.seguros.produto.application.usecase.imposto.PisInteractor;
+import br.com.itau.seguros.produto.application.usecase.imposto.CofinsUseCase;
+import br.com.itau.seguros.produto.application.usecase.imposto.ImpostoUseCase;
+import br.com.itau.seguros.produto.application.usecase.imposto.IofUseCase;
+import br.com.itau.seguros.produto.application.usecase.imposto.PisUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,25 +20,25 @@ import static org.mockito.Mockito.when;
 
 public class CalculadorDePrecoInteractorImplTest {
 
-    private IofInteractor iofImpostoInteractorMock;
-    private PisInteractor pisImpostoInteractorMock;
-    private CofinsInteractor cofinsInteractorMock;
+    private IofUseCase iofImpostoInteractorMock;
+    private PisUseCase pisImpostoInteractorMock;
+    private CofinsUseCase cofinsUseCaseMock;
     private CalculadorDePrecoInteractorImpl calculadorDePrecoInteractorImpl;
 
     @BeforeEach
     void setUp() {
 
-        Set<ImpostoInteractor> impostosMock = new HashSet<>();
+        Set<ImpostoUseCase> impostosMock = new HashSet<>();
         calculadorDePrecoInteractorImpl = new CalculadorDePrecoInteractorImpl(impostosMock);
 
-        iofImpostoInteractorMock = mock(IofInteractor.class);
-        pisImpostoInteractorMock = mock(PisInteractor.class);
-        cofinsInteractorMock = mock(CofinsInteractor.class);
+        iofImpostoInteractorMock = mock(IofUseCase.class);
+        pisImpostoInteractorMock = mock(PisUseCase.class);
+        cofinsUseCaseMock = mock(CofinsUseCase.class);
 
         impostosMock.addAll(of(
             iofImpostoInteractorMock,
             pisImpostoInteractorMock,
-            cofinsInteractorMock)
+                cofinsUseCaseMock)
         );
     }
 
@@ -54,7 +54,7 @@ public class CalculadorDePrecoInteractorImplTest {
         when(pisImpostoInteractorMock.getAliquotas())
             .thenReturn(aliquotas);
 
-        when(cofinsInteractorMock.getAliquotas())
+        when(cofinsUseCaseMock.getAliquotas())
             .thenReturn(aliquotas);
 
         when(iofImpostoInteractorMock.calcularImposto(aliquotas, VIDA, precoBase))
@@ -63,7 +63,7 @@ public class CalculadorDePrecoInteractorImplTest {
         when(pisImpostoInteractorMock.calcularImposto(aliquotas, VIDA, precoBase))
             .thenReturn(new BigDecimal("5.00"));
 
-        when(cofinsInteractorMock.calcularImposto(aliquotas, VIDA, precoBase))
+        when(cofinsUseCaseMock.calcularImposto(aliquotas, VIDA, precoBase))
             .thenReturn(new BigDecimal("2.00"));
 
         var precoTarifado = calculadorDePrecoInteractorImpl.calcularPrecoTarifado(precoBase, VIDA);

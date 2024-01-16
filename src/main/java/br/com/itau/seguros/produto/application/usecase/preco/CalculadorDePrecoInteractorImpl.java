@@ -1,6 +1,6 @@
 package br.com.itau.seguros.produto.application.usecase.preco;
 
-import br.com.itau.seguros.produto.application.usecase.imposto.ImpostoInteractor;
+import br.com.itau.seguros.produto.application.usecase.imposto.ImpostoUseCase;
 import br.com.itau.seguros.produto.domain.model.Categoria;
 
 import java.math.BigDecimal;
@@ -10,9 +10,9 @@ import static java.math.BigDecimal.ZERO;
 
 public class CalculadorDePrecoInteractorImpl implements CalculadorDePrecoInteractor {
 
-    private final Set<ImpostoInteractor> impostos;
+    private final Set<ImpostoUseCase> impostos;
 
-    public CalculadorDePrecoInteractorImpl(Set<ImpostoInteractor> impostos) {
+    public CalculadorDePrecoInteractorImpl(Set<ImpostoUseCase> impostos) {
         this.impostos = impostos;
     }
 

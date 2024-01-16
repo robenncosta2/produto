@@ -6,10 +6,10 @@ import br.com.itau.seguros.produto.application.usecase.CriarProdutoUseCase;
 import br.com.itau.seguros.produto.application.usecase.CriarProdutoUseCaseImpl;
 import br.com.itau.seguros.produto.application.usecase.ListarProdutoUseCaseImpl;
 import br.com.itau.seguros.produto.application.usecase.ListarProdutosUseCase;
-import br.com.itau.seguros.produto.application.usecase.imposto.CofinsInteractor;
-import br.com.itau.seguros.produto.application.usecase.imposto.ImpostoInteractor;
-import br.com.itau.seguros.produto.application.usecase.imposto.IofInteractor;
-import br.com.itau.seguros.produto.application.usecase.imposto.PisInteractor;
+import br.com.itau.seguros.produto.application.usecase.imposto.CofinsUseCase;
+import br.com.itau.seguros.produto.application.usecase.imposto.ImpostoUseCase;
+import br.com.itau.seguros.produto.application.usecase.imposto.IofUseCase;
+import br.com.itau.seguros.produto.application.usecase.imposto.PisUseCase;
 import br.com.itau.seguros.produto.application.usecase.preco.CalculadorDePrecoInteractor;
 import br.com.itau.seguros.produto.application.usecase.preco.CalculadorDePrecoInteractorImpl;
 import br.com.itau.seguros.produto.infrastructure.controller.ProdutoDataMapper;
@@ -56,13 +56,13 @@ public class ProdutoConfig {
     }
 
     @Bean
-    CalculadorDePrecoInteractor calculadorDePrecoInteractor(Set<ImpostoInteractor> impostos) {
+    CalculadorDePrecoInteractor calculadorDePrecoInteractor(Set<ImpostoUseCase> impostos) {
 
-        var impostosImpl = new HashSet<ImpostoInteractor>();
+        var impostosImpl = new HashSet<ImpostoUseCase>();
 
-        impostosImpl.add(new IofInteractor());
-        impostosImpl.add(new PisInteractor());
-        impostosImpl.add(new CofinsInteractor());
+        impostosImpl.add(new IofUseCase());
+        impostosImpl.add(new PisUseCase());
+        impostosImpl.add(new CofinsUseCase());
 
         return new CalculadorDePrecoInteractorImpl(impostosImpl);
     }

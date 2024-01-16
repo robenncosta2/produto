@@ -10,7 +10,7 @@ import static java.math.BigDecimal.valueOf;
 import static java.math.RoundingMode.DOWN;
 import static java.util.Objects.nonNull;
 
-public interface ImpostoInteractor {
+public interface ImpostoUseCase {
 
     Map<Categoria, BigDecimal> getAliquotas();
 

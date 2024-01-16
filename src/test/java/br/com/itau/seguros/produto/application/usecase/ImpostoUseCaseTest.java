@@ -1,6 +1,6 @@
 package br.com.itau.seguros.produto.application.usecase;
 
-import br.com.itau.seguros.produto.application.usecase.imposto.IofInteractor;
+import br.com.itau.seguros.produto.application.usecase.imposto.IofUseCase;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -15,7 +15,7 @@ public class ImpostoUseCaseTest {
     @Test
     void deveCalcularOValorDoImpostoIof() {
 
-        var imposto = new IofInteractor().calcularImposto(
+        var imposto = new IofUseCase().calcularImposto(
                 createAliquotas(),
                 PATRIMONIAL,
                 new BigDecimal("100.00"));
@@ -26,7 +26,7 @@ public class ImpostoUseCaseTest {
     @Test
     void deveRetornarZeroSeNaoEncontrarAliquota() {
 
-        var imposto = new IofInteractor().calcularImposto(
+        var imposto = new IofUseCase().calcularImposto(
                 createAliquotas(),
                 AUTO,
                 new BigDecimal("100.00"));

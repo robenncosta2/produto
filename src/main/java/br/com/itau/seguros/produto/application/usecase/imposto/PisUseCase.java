@@ -13,7 +13,7 @@ import static br.com.itau.seguros.produto.domain.model.Categoria.PATRIMONIAL;
 import static java.math.BigDecimal.valueOf;
 import static java.util.Map.of;
 
-public class PisInteractor implements ImpostoInteractor {
+public class PisUseCase implements ImpostoUseCase {
 
     @Override
     public Map<Categoria, BigDecimal> getAliquotas() {
