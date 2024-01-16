@@ -6,7 +6,6 @@ import br.com.itau.seguros.produto.infrastructure.persistence.ProdutoEntity;
 import java.util.List;
 import java.util.Optional;
 
-import static java.util.Optional.*;
 import static java.util.stream.Collectors.toList;
 
 public class ProdutoEntityMapper {
@@ -36,12 +35,12 @@ public class ProdutoEntityMapper {
     public Optional<Produto> toProdutoOptional(Optional<ProdutoEntity> produtoEntityOptional) {
 
         if (produtoEntityOptional.isEmpty()) {
-            return empty();
+            return Optional.empty();
         }
 
         var produtoValue = produtoEntityOptional.get();
 
-        return of(new Produto(
+        return Optional.of(new Produto(
             produtoValue.id(),
             produtoValue.nome(),
             produtoValue.categoria(),
