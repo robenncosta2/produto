@@ -71,16 +71,4 @@ public class ProdutoController {
 
         return ok(produtoDataMapper.toProdutoResponse(produto));
     }
-
-    @PutMapping
-    public ResponseEntity<ProdutoResponse> updateProduto(@Validated @RequestBody CreateProdutoRequest createProdutoRequest,
-            @PathVariable("id") String id) {
-
-        LOG.info("Atualizando produto, produtoRequest = {}", createProdutoRequest);
-
-        var produtoBusiness = produtoDataMapper.toCreateProduto(createProdutoRequest);
-        var produto = criarProdutoUseCase.createProduto(produtoBusiness);
-
-        return ok(produtoDataMapper.toProdutoResponse(produto));
-    }
 }
