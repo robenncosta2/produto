@@ -51,3 +51,9 @@ _(Arquitetura Limpa)_.
 Algumas vantagens dessa arquitetura:
 * Melhor separação entre código de negócio e infraestrutura (frameworks, libs)
 * Código mais fácil de testar por guiar o desenvolvedor no uso de melhores práticas de desenvolvimento
+
+### Por que MongoDB?
+
+Com base no exemplo de retorno da API presente na documentação, pude observar que a chave id trata-se de uma
+chave única universal (UUID), nesse sentido optei por utilizar um banco de dados que Oferecesse esse suporte
+de forma nativa.
