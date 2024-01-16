@@ -8,7 +8,7 @@
 
 ## Pré-Requisitos
 
-Será necessário ter as ferramentas abaixo instaladas no seu ambiente de desenvolvimento:
+Para executar o projeto é necessário possuir as ferramentas abaixo instaladas no seu ambiente de desenvolvimento:
 * Git 
 * Docker
 * Docker Compose (docker-compose)
@@ -18,9 +18,9 @@ Será necessário ter as ferramentas abaixo instaladas no seu ambiente de desenv
 
 * Entre na pasta raíz do projeto via linha de comando e execute:
 
-`mvn spring-boot:run`
-
 `docker-compose up -d`
+
+`mvn spring-boot:run`
 
 ## Documentação
 
@@ -46,7 +46,8 @@ e seguir o contrato estabelecido, não sendo necessário mecher em outros arquiv
 
 ### Arquitetura
 
-Optei por fazer uma separação entre camadas (infraestrutra, aplicação e domínio), utilizando como arquitetura a **_Clean Architecture_** 
+A arquivotura escolhira para este projeto foi a **_Clean Architecture_** 
 _(Arquitetura Limpa)_.
-É uma arquitetura mais recente e com isso traz alguns benefícios:
+Algumas vantagens dessa arquitetura:
 * Melhor separação entre código de negócio e infraestrutura (frameworks, libs)
+* Código mais fácil de testar por guiar o desenvolvedor no uso de melhores práticas de desenvolvimento
